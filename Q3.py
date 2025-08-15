@@ -11,7 +11,3 @@ for j in range(0, n, 1):
         for l in range(0, len(temp), 1):
             if temp[l] in "!@#$%^&*":
                 temp.pop[l]
-                
-    
-
-    

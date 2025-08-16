@@ -2,3 +2,5 @@ This project is a made for testing and houses all the qs for assessment 1 for 5 
 
 Tanmay Dawande
 VIT Vellore CSE Core
+
+This project is not to be taken seriously it has many errors :)

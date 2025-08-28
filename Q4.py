@@ -1,42 +1,35 @@
-import math
-
 n = int(input())
 tar = int(input())
 transAmt = input().split()
 
 main = list(map(int, transAmt))
-temp = 0
-temp2= 0
+temp2 = float("-inf")
 condition = False
-temp3 = 0
-tempList = []
 sUm = 0
+pairs = set()
 
-for i in range(0, n-1, 1):
-    temp = main[i]
-    for j in range(0, n-1, 1):
-        if i == j:
-            continue
-        else:
-            if temp + main[j] == tar:#checking if sum equals given target value
-                print(f"{temp} {main[j]}")
-                transAmt.pop(j)
+for i in range(n):
+    for j in range(i+1, n):
+        if main[i] + main [j] == tar:
+            pair = tuple(sorted((main[i], main[j])))
+            if pair not in pairs:
+                pairs.add(pair)
+                print(f"{pair[0]} {pair[1]}")
                 condition = True
-    
-for l in range(0, n, 2):#adding abs value of even indices
-    temp3 = main[l]
-    sUm = sUm + abs(temp3)
-    
-for k in range(0, n-1, 1):#multiplying adjacent to check maximum product
-    if math.prod(main[k:k+1:1])>math.prod(main[k+1:k+2:1]):#did not work
-        temp2 = math.prod(main[k:k+1:1])
-    else:
-        temp2 = math.prod(main[k+1:k+2:1])
-    
-    
+                
+                
 if condition == False:
     print("No pairs")
     
+for l in range(0, n, 2):#adding abs value of even indices
+    sUm = sUm + abs(main[l])
+    
+for k in range(n-1):#multiplying adjacent to check maximum product
+    product = main[k] * main[k+1]
+    if product > temp2:
+        temp2 = product
+    
+
 print(temp2)
 print(sUm)
 

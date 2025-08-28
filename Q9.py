@@ -1,45 +1,44 @@
 n = int(input())
-list1 = []
-list2 = []
-temp = ""
-temp2 = []
-counter = 0
-counter2 = 0
+reviews = []
+filler_words = {"very", "really", "quite", "extremely", "actually"}
 
-for i in range(0, n, 1):
-    list1.append(input())
+for i in range(n):
+    reviews.append(input())
     
-for j in range(0, n, 1):
-    temp = str(list1[j])
-    temp2 = list1[j]
-    for k in range(len(list1[j])):
-        char = temp2[k]
-        for l in range(0, len(temp2), 1):
-            if temp2[l] == " ":
-                continue
-            else:
-                if temp2[l] == char:
-                    break
-                else:
-                    counter2 += 1
+text = " ".join(reviews)
+
+words = text.split()
+filtered_words = []
+
+
+for w in words:
+    if w.lower().strip("!()-[]{};:'\",<>./?@#$%^&*_~") not in filler_words:
+        filtered_words.append(w)
         
-        if "very" in temp:
-            temp = temp.replace("very", "")
-            if " " in temp:
-                counter += 1
-        elif "really" in temp:
-            temp = temp.replace("really", "")
-            if " " in temp:
-                counter += 1
-        elif "quite" in temp:
-            temp = temp.replace("quite", "")
-            if " " in temp:
-                counter += 1
-        else:
-            continue
-    list2.append(temp.capitalize())
-    
-print(str(list2))
-print(counter+1)
-print(counter2)
-    
+if filtered_words:
+    final_txt = " ".join(filtered_words)
+    final_txt = final_txt[0].upper() + final_txt[1:]
+else:
+    final_txt = ""
+
+punctuations = '''!@#$%^&*()_+-=?/>.<,:;"'{[}\]|'''
+clean_for_count = ""
+for ch in final_txt:
+    if ch not in punctuations:
+        clean_for_count += ch
+        
+count_words = clean_for_count.split()
+
+total_words = len(count_words)
+
+
+unique_words = set(w.lower() for w in count_words)
+unique_count = len(unique_words)
+
+
+print(final_txt)
+print(total_words)
+print(unique_count)
+            
+            
+            

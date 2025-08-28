@@ -1,13 +1,25 @@
 n = int(input())
-passwords = []
-temp  = []
+lst = []
+spec_char = {"!", "@", "#", "$", "%", "^", "&", "*"}
 
-for i in range(0, n, 1):
-    passwords.append(input())
+
+for i in range(n):
+    lst.append(input())
+
+for j in range(n):
+    password = lst[j]
+    specials = []
+    normals = []
     
-for j in range(0, n, 1):
-    for k in range(0, len(passwords[j],), 1):
-        temp = [passwords[k]]
-        for l in range(0, len(temp), 1):
-            if temp[l] in "!@#$%^&*":
-                temp.pop[l]
+    for ch in password:
+        if ch in spec_char:
+            specials.append(ch)
+        else:
+            normals.append(ch)
+            
+    if len(specials) >= 2:
+        print("".join(specials) + "".join(normals))
+    else:
+        print("Invalid")
+            
+                

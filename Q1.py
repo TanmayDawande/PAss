@@ -3,50 +3,58 @@ l = int(landr[0])
 r = int(landr[1])
 minSummaxSum = input().split()
 minSum = int(minSummaxSum[0])
-maxSUm = int(minSummaxSum[1])
+maxSum = int(minSummaxSum[1])
 
-a = 0
-revNum = 0
-step = 0
 counter = 0
-condition = False
-sumNum = 0
+totalSum = 0
 
-for i in range(l, r, 1):
-    if a==0:
-        condition = False
-    else:
-        step = step+1
-        
-        
-    for m in range(l, r, 1):
-        a = m%10
-        sumNum = sumNum + a
+for i in range(l, r+1, 1):
+    condition = True
+    sumNum = 0
+    temp = i
+    digits = []
     
-    a = int(a/10)
-    for j in range(0, len(str(i))):
-        b = i%10
-        if i%b == 0:
-            step = step+1
-        else:
+    while temp > 0:
+        d = temp%10
+        if d == 0:
             condition = False
+            break
+        digits.append(d)
+        sumNum +=d
+        temp //=10
         
-        revNum = a*pow(10, len(str(i))) + revNum
-        
-    for k in range(0, len(str(revNum))):
-        b = revNum%10
-        if revNum%b == 0:
-            step = step+1
-        else:
+    if not condition:
+        continue
+    
+    for d in digits:
+        if i % d != 0:
             condition = False
-        b = int(b/10)
+            break
+    if not condition:
+        continue
+    
+    if not (minSum <= sumNum <= maxSum):
+        continue
+    
+    revNum = int(str(i)[::-1])
+    
+    for d in digits:
+        if revNum % d != 0:
+            condition = False
+            break
         
-    if sumNum>=minSum and sumNum<=maxSUm:
-        if step == 3:
-            counter = counter+1
+    if condition:
+        counter += 1
+        totalSum += i
+        
+        
         
 print(counter)
-print(sumNum)
-print(sumNum/counter)
+print(totalSum)
+if counter > 0:
+    print(f"{totalSum/counter:.2f}")
+else:
+    print("0.00")
     
-        
+    
+    

@@ -37,6 +37,3 @@ for l in range(len(liststr7)):
     print(f"{tempChar} : {count}")
     visted = visted + tempChar
         
-
-
-    

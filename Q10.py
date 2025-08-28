@@ -19,7 +19,3 @@ for l in range(n-1):
     temp = lst[l]
     for m in range(n-1):
         if temp==lst[m]:
-            
-    
-        
-        

@@ -55,6 +55,3 @@ if counter > 0:
     print(f"{totalSum/counter:.2f}")
 else:
     print("0.00")
-    
-    
-    

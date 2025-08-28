@@ -32,6 +32,4 @@ for k in range(n-1):#multiplying adjacent to check maximum product
 
 print(temp2)
 print(sUm)
-
-
-    
+  

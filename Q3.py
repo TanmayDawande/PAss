@@ -21,5 +21,3 @@ for j in range(n):
         print("".join(specials) + "".join(normals))
     else:
         print("Invalid")
-            
-                
